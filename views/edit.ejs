@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+            transform: translateY(-5px);
+        }
+
+        .button-container button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        .button-container a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Post</h1>
+        <form action="/posts/<%= post.id %>?_method=PUT" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="<%= post.title %>" required>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required><%= post.content %></textarea>
+
+            <div class="button-container">
+                <button type="submit">Save Changes</button>
+                <a href="/posts">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
